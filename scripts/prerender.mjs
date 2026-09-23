@@ -45,10 +45,10 @@ function headFor(meta, { indexable = true } = {}) {
     `<meta name="twitter:description" content="${esc(meta.description)}" />`,
     `<meta property="og:image" content="${image}" />`,
     `<meta property="og:image:secure_url" content="${image}" />`,
-    // Todas las vistas previas son JPG 1200×630 (scripts/brand.mjs y scripts/optimizar-imagenes.mjs).
+    // JPG siempre. General = logo 1200×1200 (scripts/brand.mjs); categoría = foto 1200×630 (pnpm fotos).
     `<meta property="og:image:type" content="image/jpeg" />`,
     `<meta property="og:image:width" content="1200" />`,
-    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:height" content="${meta.image ? 630 : 1200}" />`,
     `<meta property="og:image:alt" content="${esc(alt)}" />`,
     `<meta name="twitter:image" content="${image}" />`,
     ...meta.jsonLd.map(jsonLd),

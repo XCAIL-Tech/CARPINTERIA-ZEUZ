@@ -14,14 +14,15 @@ export type RouteMeta = {
   path: string;
   title: string;
   description: string;
-  /** Imagen para compartir: JPG 1200×630, absoluta. Default: /og-image.jpg */
+  /** Imagen de categoría para compartir: JPG 1200×630, absoluta. Default: logo (/og-image.jpg) */
   image?: string;
   imageAlt?: string;
   jsonLd: object[];
 };
 
 const BUSINESS_ID = `${SITE.url}/#business`;
-const DEFAULT_IMAGE = `${SITE.url}/og-image.jpg`;
+// ?v= fuerza a WhatsApp / Facebook a pedir la imagen de nuevo cuando cambia (cachean por URL).
+const DEFAULT_IMAGE = `${SITE.url}/og-image.jpg?v=2`;
 const DEFAULT_IMAGE_ALT = "Carpintería Zeuz — muebles a medida";
 const HOME_TITLE = "Carpintería Zeuz — Muebles a medida en Tres de Febrero";
 
