@@ -30,7 +30,7 @@ export function ProductGrid({ category, showCategory = false }: { category: Cate
                 disabled={zoomIndex < 0}
                 onClick={() => setOpenIndex(zoomIndex)}
                 aria-label={zoomIndex >= 0 ? `Ampliar foto: ${p.title}` : p.title}
-                className="relative aspect-[4/3] overflow-hidden bg-muted disabled:cursor-default"
+                className="relative aspect-[4/5] overflow-hidden bg-white disabled:cursor-default"
               >
                 <CoverImage
                   src={p.src}

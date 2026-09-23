@@ -19,10 +19,13 @@ pnpm lint
 Categorías: `living` · `dormitorio` · `cocina` · `bano` · `infantil` · `home-office`
 (6 productos cada una, definidos en `src/data/productos.ts`).
 
-1. Copiar las fotos en `fotos-originales/<categoría>/` nombradas `1.jpg` … `6.jpg`
-   (la 1 corresponde al producto `01`, y así). Esa carpeta no se sube al repo.
+1. Copiar las fotos en `fotos-originales/<categoría>/` con el **número de producto
+   al principio del nombre**: `1-vanitory_flotante.jpg` → producto `01`,
+   `5-columna.webp` → producto `05`. Si falta un número, ese producto sigue con
+   relleno. Esa carpeta no se sube al repo.
 2. `pnpm fotos` → genera `src/assets/productos/<categoría>/01.webp …` optimizadas
-   (1600px, WebP). Cada foto se asocia sola a su producto por el número.
+   (máx. 1600px, WebP) y la vista previa para WhatsApp de la categoría (si alguna
+   foto tiene al menos 1000px de ancho).
 3. Editar título y descripción del producto en `src/data/productos.ts`.
 
 Un producto sin foto muestra un relleno de madera con el ícono de la categoría.

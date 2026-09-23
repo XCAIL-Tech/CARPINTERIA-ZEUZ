@@ -20,7 +20,7 @@ categoría ("vidriera virtual") con imagen profesional y derivar toda consulta a
 
 ```bash
 pnpm dev | build | lint | preview
-pnpm fotos   # fotos-originales/<cat>/N.jpg → src/assets/productos/<cat>/0N.webp
+pnpm fotos   # fotos-originales/<cat>/N-nombre.ext → src/assets/productos/<cat>/0N.webp
 pnpm brand   # branding/logo-zeuz.png → logo web, favicon, íconos, public/og-image.jpg
 ```
 
