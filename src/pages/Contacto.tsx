@@ -5,7 +5,6 @@ import { PageHeader } from "@/components/products/PageHeader";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { FacebookIcon, InstagramIcon, TikTokIcon, WhatsAppIcon } from "@/components/icons";
 import { SITE, ZONE_LABEL } from "@/config/site";
-import { usePageMeta } from "@/lib/usePageMeta";
 
 const NETWORKS = [
   { label: "Instagram", Icon: InstagramIcon, ...SITE.social.instagram },
@@ -14,8 +13,6 @@ const NETWORKS = [
 ];
 
 export default function Contacto() {
-  usePageMeta("Contacto", `Escribinos por WhatsApp al ${SITE.phoneDisplay}. ${ZONE_LABEL}. Hacemos envíos.`);
-
   return (
     <Layout>
       <PageHeader

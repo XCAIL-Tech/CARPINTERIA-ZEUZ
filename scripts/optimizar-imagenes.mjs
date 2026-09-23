@@ -11,6 +11,10 @@
 // Resultado: src/assets/productos/<categoria>/01.webp, 02.webp… (máx. 1600px
 // de ancho, WebP calidad 78). Solo se tocan las categorías que tengan
 // originales; en ellas se regeneran todas las fotos.
+//
+// Además: src/assets/og/<categoria>.jpg (1200×630, a partir de la foto 1) —
+// la vista previa al compartir el link de esa categoría por WhatsApp / redes
+// (WhatsApp no muestra bien las vistas previas en WebP, por eso va en JPG).
 
 import { mkdir, readdir, rm } from "node:fs/promises";
 import path from "node:path";
@@ -18,6 +22,7 @@ import sharp from "sharp";
 
 const SRC = "fotos-originales";
 const OUT = "src/assets/productos";
+const OG = "src/assets/og";
 const EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".heic"]);
 
 const categories = await readdir(SRC, { withFileTypes: true }).catch(() => {
@@ -34,6 +39,13 @@ for (const dir of categories.filter((d) => d.isDirectory())) {
   const outDir = path.join(OUT, dir.name);
   await rm(outDir, { recursive: true, force: true });
   await mkdir(outDir, { recursive: true });
+
+  await mkdir(OG, { recursive: true });
+  await sharp(path.join(SRC, dir.name, files[0]))
+    .rotate()
+    .resize(1200, 630, { fit: "cover", position: "attention" })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(path.join(OG, `${dir.name}.jpg`));
 
   for (const [i, file] of files.entries()) {
     const name = `${String(i + 1).padStart(2, "0")}.webp`;

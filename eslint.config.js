@@ -30,6 +30,11 @@ export default tseslint.config(
     },
   },
   {
+    // Entry del prerender: solo corre en el build, no participa del fast refresh.
+    files: ["src/entry-server.tsx"],
+    rules: { "react-refresh/only-export-components": "off" },
+  },
+  {
     files: ["scripts/**/*.mjs", "*.config.{js,ts}"],
     languageOptions: {
       globals: { ...globals.node },

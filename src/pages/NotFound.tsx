@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import { usePageMeta } from "@/lib/usePageMeta";
 
 export default function NotFound() {
-  usePageMeta("Página no encontrada");
-
   return (
     <Layout>
       <div className="container flex min-h-[55vh] flex-col items-center justify-center py-20 text-center">

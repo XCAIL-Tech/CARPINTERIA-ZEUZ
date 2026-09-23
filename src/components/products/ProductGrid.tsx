@@ -24,7 +24,7 @@ export function ProductGrid({ category, showCategory = false }: { category: Cate
         {items.map((p) => {
           const zoomIndex = withImage.findIndex((w) => w.id === p.id);
           return (
-            <article key={p.id} className="panel group flex flex-col overflow-hidden">
+            <article key={p.id} id={`${category.slug}-${p.id}`} className="panel group flex scroll-mt-40 flex-col overflow-hidden">
               <button
                 type="button"
                 disabled={zoomIndex < 0}

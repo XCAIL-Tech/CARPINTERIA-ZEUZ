@@ -21,7 +21,7 @@ categoría ("vidriera virtual") con imagen profesional y derivar toda consulta a
 ```bash
 pnpm dev | build | lint | preview
 pnpm fotos   # fotos-originales/<cat>/N.jpg → src/assets/productos/<cat>/0N.webp
-pnpm og      # regenera public/og-image.jpg
+pnpm brand   # branding/logo-zeuz.png → logo web, favicon, íconos, public/og-image.jpg
 ```
 
 ## Arquitectura
@@ -36,7 +36,20 @@ pnpm og      # regenera public/og-image.jpg
   (Navbar + Footer + globo WhatsApp + volver arriba).
 - Cada tarjeta de producto: foto (ampliable) + título + descripción + botón WhatsApp
   con `quoteMessage(producto, categoría)`.
-- `usePageMeta(title, description)` en cada página.
+- **SEO / prerender:** `src/seo/meta.ts` es la fuente única de title / description /
+  og:image / JSON-LD por ruta. `pnpm build` = vite build + build SSR de
+  `src/entry-server.tsx` + `scripts/prerender.mjs` → `dist/<ruta>/index.html` con HTML
+  real + head propio, `404.html`, `sitemap.xml`, `llms.txt`. El cliente hidrata
+  (`main.tsx`); `Layout` actualiza title/description al navegar.
+- Rutas en `src/AppRoutes.tsx` (compartidas por BrowserRouter y StaticRouter). Nueva
+  ruta → agregarla también en `src/seo/meta.ts`.
+- `vercel.json` sin rewrite catch-all a propósito: cada ruta tiene su HTML y lo
+  inexistente devuelve 404 real. No verificar hidratación con `vite preview` (sirve
+  siempre el index del home); usar `npx serve dist`.
+- Vista previa para WhatsApp: siempre JPG 1200×630 (WhatsApp no muestra bien WebP).
+  General: `public/og-image.jpg`; por categoría: `src/assets/og/<cat>.jpg` (lo genera `pnpm fotos`).
+- Todo el render inicial debe ser determinístico (sin `window`/fechas variables fuera de
+  efectos) para que la hidratación coincida.
 
 ## Convenciones
 

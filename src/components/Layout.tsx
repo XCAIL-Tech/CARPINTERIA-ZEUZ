@@ -5,6 +5,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ScrollToTop } from "./ScrollToTop";
 import { WhatsAppFloat } from "./WhatsAppFloat";
+import { DEFAULTS, getRouteMeta } from "@/seo/meta";
 
 /**
  * En cada navegación: si la URL trae #ancla, scrollea a esa sección
@@ -25,8 +26,26 @@ function useScrollOnNavigate() {
   }, [pathname, hash]);
 }
 
+/**
+ * Título / description / canonical al navegar dentro de la SPA. El HTML
+ * inicial de cada ruta ya viene con todo esto desde el prerender.
+ */
+function useRouteMeta() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const meta = getRouteMeta(pathname);
+    document.title = meta.title;
+    document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute("content", meta.description);
+    document
+      .querySelector<HTMLLinkElement>('link[rel="canonical"]')
+      ?.setAttribute("href", `${DEFAULTS.url}${meta.path === "/" ? "/" : meta.path}`);
+  }, [pathname]);
+}
+
 export function Layout({ children, whatsappMessage }: { children: ReactNode; whatsappMessage?: string }) {
   useScrollOnNavigate();
+  useRouteMeta();
 
   return (
     <>

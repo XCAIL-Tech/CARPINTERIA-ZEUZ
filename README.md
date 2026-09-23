@@ -10,7 +10,7 @@ llevan a WhatsApp con un mensaje precargado según el producto.
 ```bash
 pnpm install
 pnpm dev        # http://localhost:5173
-pnpm build      # tsc + vite build → dist/
+pnpm build      # tsc + vite build + prerender de cada ruta → dist/
 pnpm lint
 ```
 
@@ -35,11 +35,30 @@ Un producto sin foto muestra un relleno de madera con el ícono de la categoría
 - Teléfono, mail, zona, redes: `src/config/site.ts`
 - Categorías y productos (títulos, descripciones): `src/data/productos.ts`
   - Al sumar una categoría: agregar su ícono en `src/components/products/categoryIcons.ts`
-    y su URL en `public/sitemap.xml`.
-- Imagen para compartir en redes: `pnpm og` regenera `public/og-image.jpg`.
+    (rutas, sitemap y SEO se generan solos).
+- SEO por página (título, descripción, vista previa, datos estructurados): `src/seo/meta.ts`.
+- Preguntas frecuentes: `src/data/faq.ts`.
+
+## Logo y vista previa para WhatsApp
+
+- Logo original: `branding/logo-zeuz.png` (PNG con fondo transparente).
+- `pnpm brand` genera desde ahí el logo web, favicon, íconos de celular y
+  `public/og-image.jpg` (la tarjeta 1200×630 que se ve al compartir el link).
+- Al cargar fotos (`pnpm fotos`) se genera además la vista previa de cada
+  categoría: compartir `/productos/cocina` muestra la foto 1 de Cocina.
+
+## SEO / GEO
+
+`pnpm build` prerenderiza cada ruta (`scripts/prerender.mjs`): el HTML ya trae
+el contenido y su `<head>` propio, así WhatsApp, Facebook, Google y los
+buscadores con IA lo leen sin ejecutar JavaScript. También genera
+`sitemap.xml`, `llms.txt` y `404.html`.
+
+Para compartir un link y ver la vista previa nueva en WhatsApp después de un
+cambio, puede tardar: WhatsApp cachea las vistas previas por URL.
 
 ## Deploy
 
 Vercel importa el repo y deploya en cada push a `main` (preset Vite, sin
 variables de entorno). Si cambia el dominio, reemplazar `carpinteriazeuz.vercel.app`
-en `index.html`, `src/config/site.ts`, `public/robots.txt` y `public/sitemap.xml`.
+en `index.html`, `src/config/site.ts` y `public/robots.txt` (el sitemap se genera solo).

@@ -90,3 +90,9 @@ src/typegen.d.ts
 
 # Fotos originales del catálogo (sin optimizar) — ver scripts/optimizar-imagenes.mjs
 fotos-originales/
+
+.vercel
+.env*
+
+# Build SSR intermedio del prerender
+dist-ssr/

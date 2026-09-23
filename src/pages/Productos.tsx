@@ -6,7 +6,6 @@ import { CategoryTabs } from "@/components/products/CategoryTabs";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { QuoteBanner } from "@/components/products/QuoteBanner";
 import { CATEGORIES, findCategory } from "@/data/productos";
-import { usePageMeta } from "@/lib/usePageMeta";
 import NotFound from "./NotFound";
 
 /** Vidriera virtual: /productos (ver todo) y /productos/:categoria. */
@@ -14,12 +13,6 @@ export default function Productos() {
   const { categoria } = useParams();
   const category = findCategory(categoria);
   const notFound = categoria !== undefined && !category;
-
-  usePageMeta(
-    notFound ? "Página no encontrada" : category ? `${category.name} a medida` : "Vidriera virtual",
-    category?.description ??
-      "Vidriera virtual de muebles a medida: living, dormitorio, cocina, baño, infantil y home office. Consultá por WhatsApp.",
-  );
 
   if (notFound) return <NotFound />;
 

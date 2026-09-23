@@ -132,6 +132,13 @@ export function getCategoryCover(category: Category): string | undefined {
   return undefined;
 }
 
+const ogModules = import.meta.glob<string>("/src/assets/og/*.jpg", { eager: true, query: "?url", import: "default" });
+
+/** Vista previa 1200×630 de la categoría para compartir (la genera `pnpm fotos`). */
+export function getCategoryShareImage(categorySlug: string): string | undefined {
+  return ogModules[`/src/assets/og/${categorySlug}.jpg`];
+}
+
 export function findCategory(slug: string | undefined): Category | undefined {
   return CATEGORIES.find((c) => c.slug === slug);
 }

@@ -6,12 +6,12 @@
     "packageManager": "pnpm@10.28.2",
     "scripts": {
         "dev": "vite",
-        "build": "tsc && vite build",
+        "build": "tsc && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "preview": "vite preview",
         "fotos": "node scripts/optimizar-imagenes.mjs",
-        "og": "node scripts/og-image.mjs"
+        "brand": "node scripts/brand.mjs"
     },
     "dependencies": {
         "@radix-ui/react-dialog": "^1.0.5",

@@ -1,69 +1,107 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-AR">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1A130E" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Carpintería Zeuz" />
+  <meta name="geo.region" content="AR-B" />
+  <meta name="geo.placename" content="Pablo Podestá, Tres de Febrero, Buenos Aires" />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" />
+
+  <!-- Bloque por ruta: scripts/prerender.mjs lo reemplaza con los datos de src/seo/meta.ts -->
+  <!--seo:start-->
   <title>Carpintería Zeuz — Muebles a medida en Tres de Febrero</title>
-
   <meta name="description"
-    content="Carpintería Zeuz: muebles a medida para living, dormitorio, cocina, baño, infantil y home office. Pablo Podestá, Tres de Febrero. Hacemos envíos." />
-  <meta name="robots" content="index, follow" />
-  <meta http-equiv="content-language" content="es-AR" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://carpinteriazeuz.vercel.app/" />
-  <meta property="og:title" content="Carpintería Zeuz — Muebles a medida" />
-  <meta property="og:description"
-    content="Living, dormitorio, cocina, baño, infantil y home office. Diseñamos y fabricamos a la medida de tu espacio. Pedí tu cotización por WhatsApp." />
-  <meta property="og:image" content="https://carpinteriazeuz.vercel.app/og-image.jpg" />
-  <meta property="og:locale" content="es_AR" />
-  <meta property="og:site_name" content="Carpintería Zeuz" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Carpintería Zeuz — Muebles a medida" />
-  <meta name="twitter:description"
-    content="Living, dormitorio, cocina, baño, infantil y home office. Diseñamos y fabricamos a la medida de tu espacio." />
-  <meta name="twitter:image" content="https://carpinteriazeuz.vercel.app/og-image.jpg" />
-
+    content="Carpintería Zeuz: muebles a medida para living, dormitorio, cocina, baño, infantil y home office en Pablo Podestá, Tres de Febrero. Reparaciones y envíos. Pedí tu cotización por WhatsApp." />
   <link rel="canonical" href="https://carpinteriazeuz.vercel.app/" />
+  <!--seo:end-->
+
+  <!-- Vista previa al compartir (WhatsApp, Facebook, Instagram, X): lo común; título, texto e imagen van en el bloque por ruta -->
+  <meta property="og:site_name" content="Carpintería Zeuz" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    "@id": "https://carpinteriazeuz.vercel.app/#business",
-    "name": "Carpintería Zeuz",
-    "url": "https://carpinteriazeuz.vercel.app",
-    "image": "https://carpinteriazeuz.vercel.app/og-image.jpg",
-    "description": "Carpintería de muebles a medida: living, dormitorio, cocina, baño, infantil y home office. Reparaciones y proyectos especiales. Hacemos envíos.",
-    "telephone": "+54 9 11 3330-1482",
-    "email": "carpinteriazeuz@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Pablo Podestá",
-      "addressRegion": "Buenos Aires",
-      "addressCountry": "AR"
-    },
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "Tres de Febrero" },
-      { "@type": "AdministrativeArea", "name": "Gran Buenos Aires" }
-    ],
-    "sameAs": [
-      "https://www.instagram.com/carpinteriazeuz",
-      "https://www.tiktok.com/@carpinteriazeuz",
-      "https://www.facebook.com/carpinteriazeuz"
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+        "@id": "https://carpinteriazeuz.vercel.app/#business",
+        "name": "Carpintería Zeuz",
+        "alternateName": "Zeuz Carpintería",
+        "description": "Carpintería de muebles a medida en Pablo Podestá, Tres de Febrero (Buenos Aires). Muebles para living, dormitorio, cocina, baño, cuartos infantiles y home office. Reparaciones de muebles y envíos.",
+        "url": "https://carpinteriazeuz.vercel.app",
+        "logo": "https://carpinteriazeuz.vercel.app/brand/logo-512.png",
+        "image": "https://carpinteriazeuz.vercel.app/og-image.jpg",
+        "telephone": "+54 9 11 3330-1482",
+        "email": "carpinteriazeuz@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Pablo Podestá",
+          "addressRegion": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Tres de Febrero" },
+          { "@type": "State", "name": "Buenos Aires" }
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+54 9 11 3330-1482",
+          "contactType": "sales",
+          "availableLanguage": "es",
+          "url": "https://wa.me/5491133301482"
+        },
+        "knowsAbout": [
+          "Muebles a medida", "Carpintería", "Placares", "Vestidores", "Alacenas", "Bajo mesadas",
+          "Vanitorys", "Racks de TV", "Mesas de luz flotantes", "Muebles infantiles", "Escritorios", "Reparación de muebles"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Muebles a medida",
+          "itemListElement": [
+            { "@type": "OfferCatalog", "name": "Living", "url": "https://carpinteriazeuz.vercel.app/productos/living" },
+            { "@type": "OfferCatalog", "name": "Dormitorio", "url": "https://carpinteriazeuz.vercel.app/productos/dormitorio" },
+            { "@type": "OfferCatalog", "name": "Cocina", "url": "https://carpinteriazeuz.vercel.app/productos/cocina" },
+            { "@type": "OfferCatalog", "name": "Baño", "url": "https://carpinteriazeuz.vercel.app/productos/bano" },
+            { "@type": "OfferCatalog", "name": "Infantil", "url": "https://carpinteriazeuz.vercel.app/productos/infantil" },
+            { "@type": "OfferCatalog", "name": "Home Office", "url": "https://carpinteriazeuz.vercel.app/productos/home-office" }
+          ]
+        },
+        "sameAs": [
+          "https://www.instagram.com/carpinteriazeuz",
+          "https://www.tiktok.com/@carpinteriazeuz",
+          "https://www.facebook.com/carpinteriazeuz"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://carpinteriazeuz.vercel.app/#website",
+        "name": "Carpintería Zeuz",
+        "url": "https://carpinteriazeuz.vercel.app",
+        "inLanguage": "es-AR",
+        "publisher": { "@id": "https://carpinteriazeuz.vercel.app/#business" }
+      }
     ]
   }
   </script>
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root"><!--app-html--></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

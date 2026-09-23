@@ -19,7 +19,7 @@ export function Footer() {
           {/* Marca */}
           <div className="flex flex-col gap-4">
             <Link to="/" aria-label="Carpintería Zeuz — Inicio" className="w-fit">
-              <Logo />
+              <Logo size="lg" />
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-white/60">
               Muebles a medida para living, dormitorio, cocina, baño, cuartos infantiles y home office. Diseñamos y fabricamos a la medida de tu espacio.

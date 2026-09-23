@@ -5,8 +5,7 @@ import { QuoteBanner } from "@/components/products/QuoteBanner";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Process } from "@/components/home/Process";
 import { Services } from "@/components/home/Services";
-import { SITE, ZONE_LABEL } from "@/config/site";
-import { usePageMeta } from "@/lib/usePageMeta";
+import { SITE } from "@/config/site";
 
 const VALUES = [
   { Icon: Ruler, title: "Todo a medida", desc: "Cada mueble se diseña para tu espacio, tus medidas y tu forma de usarlo." },
@@ -16,11 +15,6 @@ const VALUES = [
 ];
 
 export default function AcercaDe() {
-  usePageMeta(
-    "Acerca de",
-    `${SITE.name}: carpintería de muebles a medida en ${ZONE_LABEL}. Conocé cómo trabajamos.`,
-  );
-
   return (
     <Layout>
       <PageHeader
@@ -33,6 +27,13 @@ export default function AcercaDe() {
       <section className="py-20 sm:py-24">
         <div className="container grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
           <div>
+            <img
+              src="/brand/logo-zeuz.webp"
+              alt="Logo de Carpintería Zeuz"
+              width={256}
+              height={256}
+              className="mb-8 h-36 w-36 drop-shadow-[0_12px_24px_rgba(26,19,14,0.35)]"
+            />
             <SectionHeader eyebrow="Quiénes somos" title="Muebles pensados para tu espacio" className="mb-6" />
             <div className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p>
