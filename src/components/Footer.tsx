@@ -77,11 +77,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-2 border-t border-white/10 py-7 text-xs text-white/45 sm:flex-row">
+        <div className="flex flex-col items-center gap-3 border-t border-white/10 py-7 text-center text-xs text-white/45">
           <p>
             © {new Date().getFullYear()} {SITE.name}. Todos los derechos reservados.
           </p>
-          <nav className="flex gap-5">
+          <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2">
             <Link to="/acerca-de" className="transition-colors hover:text-white">
               Acerca de
             </Link>
