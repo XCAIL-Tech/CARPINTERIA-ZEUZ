@@ -8,11 +8,6 @@ export const FAQ = [
       "Hacemos muebles a medida para living, dormitorio, cocina, baño, cuartos infantiles y home office: racks de TV, placares, vestidores, mesas de luz flotantes, alacenas, bajo mesadas, vanitorys, escritorios y más. También hacemos reparaciones.",
   },
   {
-    question: "¿Por qué no hay precios en la web?",
-    answer:
-      "Porque todos nuestros muebles son a medida: el precio depende de las medidas, los materiales y las terminaciones que elijas. Escribinos por WhatsApp y te pasamos una cotización sin compromiso.",
-  },
-  {
     question: "¿Puedo pedir un mueble que no esté en la vidriera?",
     answer:
       "Sí. La vidriera virtual es una muestra de lo que hacemos. Si tenés una idea o una foto de referencia, la adaptamos a tu espacio.",
