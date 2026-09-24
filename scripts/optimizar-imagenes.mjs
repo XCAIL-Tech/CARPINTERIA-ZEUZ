@@ -13,8 +13,8 @@
 // de ancho, WebP calidad 80). Solo se tocan las categorías que tengan
 // originales; en ellas se regeneran todas las fotos.
 //
-// Además: src/assets/og/<categoria>.jpg (1200×630, a partir de la foto de mayor
-// resolución, si llega a 1000px) — la vista previa al compartir el link de esa
+// Además: src/assets/og/<categoria>.jpg (1200×630, a partir de la primera foto con buena
+// resolución, desde 1000px) — la vista previa al compartir el link de esa
 // categoría por WhatsApp / redes (WhatsApp no muestra bien las vistas previas en WebP).
 
 import { mkdir, readdir, rm } from "node:fs/promises";
@@ -69,15 +69,16 @@ for (const dir of categories.filter((d) => d.isDirectory())) {
     console.log(`${dir.name}/${id}.webp  ←  ${file}  (${info.width}×${info.height}, ${Math.round(info.size / 1024)} KB)`);
   }
 
-  // Vista previa para compartir: la foto de mayor resolución, solo si da para
-  // 1200×630 sin verse borrosa. Si ninguna alcanza, se comparte el logo.
+  // Vista previa para compartir: la primera foto (en orden de producto; la 01 es
+  // la portada) que dé para 1200×630 sin verse borrosa. Si ninguna alcanza, se
+  // comparte el logo.
   const ogFile = path.join(OG, `${dir.name}.jpg`);
   await rm(ogFile, { force: true });
   const sized = await Promise.all(
     photos.map(async (p) => ({ ...p, width: (await sharp(path.join(SRC, dir.name, p.file)).metadata()).width ?? 0 })),
   );
-  const best = sized.sort((a, b) => b.width - a.width)[0];
-  if (best.width >= MIN_OG_WIDTH) {
+  const best = sized.find((p) => p.width >= MIN_OG_WIDTH);
+  if (best) {
     await mkdir(OG, { recursive: true });
     await sharp(path.join(SRC, dir.name, best.file))
       .rotate()

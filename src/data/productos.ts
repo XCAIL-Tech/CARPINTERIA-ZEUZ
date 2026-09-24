@@ -29,12 +29,12 @@ export const CATEGORIES: Category[] = [
     name: "Living",
     description: "Racks de TV, mesas, bibliotecas y muebles para el corazón de tu casa.",
     products: [
-      { id: "01", title: "Rack de TV flotante", description: "Suspendido, con cajones y pasacables ocultos." },
-      { id: "02", title: "Mesa ratona", description: "Madera maciza o melamina, en la medida justa para tu living." },
-      { id: "03", title: "Biblioteca", description: "Estantes a medida para libros, decoración y guardado." },
-      { id: "04", title: "Aparador / vajillero", description: "Guardado con puertas y cajones para el comedor." },
-      { id: "05", title: "Mesa de comedor", description: "Para 4, 6 u 8 personas, en el diseño que elijas." },
-      { id: "06", title: "Estantería de pared", description: "Estantes flotantes y módulos para ordenar y decorar." },
+      { id: "01", title: "Rack de TV flotante", description: "Suspendido, con estantes abiertos para equipos y decoración." },
+      { id: "02", title: "Mesa ratona", description: "Líneas simples, en el color y la medida justa para tu living." },
+      { id: "03", title: "Biblioteca", description: "Estantes alternados para libros y decoración, liviana a la vista." },
+      { id: "04", title: "Aparador / vajillero", description: "Puertas vidriadas y cajones para vajilla y guardado." },
+      { id: "05", title: "Mesa de comedor", description: "Para 4, 6 u 8 personas, en el diseño y las terminaciones que elijas." },
+      { id: "06", title: "Estantería de pared", description: "Módulos flotantes para ordenar y decorar." },
     ],
   },
   {
@@ -73,7 +73,7 @@ export const CATEGORIES: Category[] = [
       { id: "03", title: "Espejo con repisa", description: "Espejo con marco y repisa inferior, en el tamaño que necesites." },
       { id: "04", title: "Botiquín con espejo y luces", description: "Guardado detrás del espejo, con estantes e iluminación." },
       { id: "05", title: "Columna de baño", description: "Estantes abiertos para toallas, canastos y productos." },
-      { id: "06", title: "Estante de baño", description: "Estantes y repisas para aprovechar la pared." },
+      { id: "06", title: "Estante de baño", description: "Estante de pared con repisas, para aprovechar el espacio." },
     ],
   },
   {
