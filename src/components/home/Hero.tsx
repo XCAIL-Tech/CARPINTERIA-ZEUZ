@@ -14,8 +14,9 @@ const BADGES = [
 ];
 
 export function Hero() {
-  // Collage con la portada de las primeras tres categorías.
-  const collage = CATEGORIES.slice(0, 3).map((c) => ({ name: c.name, slug: c.slug, cover: getCategoryCover(c) }));
+  // Collage 2×2 con la portada de las primeras cuatro categorías. Celdas
+  // cuadradas: las fotos de producto son cuadradas o casi, así no se cortan.
+  const collage = CATEGORIES.slice(0, 4).map((c) => ({ name: c.name, slug: c.slug, cover: getCategoryCover(c) }));
 
   return (
     <section
@@ -56,12 +57,12 @@ export function Hero() {
         </div>
 
         {/* Collage */}
-        <div className="grid h-[420px] grid-cols-2 grid-rows-2 gap-3 animate-fade-up sm:h-[520px]">
-          {collage.map((item, i) => (
+        <div className="mx-auto grid w-full max-w-[560px] grid-cols-2 gap-3 animate-fade-up">
+          {collage.map((item) => (
             <Link
               key={item.slug}
               to={`/productos/${item.slug}`}
-              className={`group relative overflow-hidden rounded-lg ring-1 ring-white/10 ${i === 0 ? "row-span-2" : ""}`}
+              className="group relative aspect-square overflow-hidden rounded-lg bg-white ring-1 ring-white/10"
             >
               <CoverImage src={item.cover} alt={item.name} icon={CATEGORY_ICONS[item.slug]} loading="eager" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />

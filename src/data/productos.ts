@@ -102,12 +102,12 @@ export const CATEGORIES: Category[] = [
     name: "Home Office",
     description: "Escritorios y guardado para trabajar cómodo en casa.",
     products: [
-      { id: "01", title: "Escritorio a medida", description: "Adaptado a tu espacio, con pasacables y cajones." },
-      { id: "02", title: "Escritorio flotante", description: "Suspendido en la pared, ideal para espacios chicos." },
-      { id: "03", title: "Biblioteca de oficina", description: "Estantes y puertas para libros y carpetas." },
-      { id: "04", title: "Cajonera", description: "Cajonera fija o con ruedas, bajo escritorio." },
-      { id: "05", title: "Estantería de pared", description: "Módulos para tener todo a mano." },
-      { id: "06", title: "Mueble archivo / impresora", description: "Guardado para documentos y equipos." },
+      { id: "01", title: "Escritorio a medida", description: "Amplio y de líneas simples, adaptado a tu espacio de trabajo." },
+      { id: "02", title: "Escritorio flotante", description: "Suspendido en la pared, con cajón. Ideal para espacios chicos." },
+      { id: "03", title: "Biblioteca de oficina", description: "Estantes abiertos para libros, carpetas y decoración." },
+      { id: "04", title: "Cajonera", description: "Con ruedas y cerradura, para guardar bajo el escritorio." },
+      { id: "05", title: "Estantería de pared", description: "Estantes flotantes escalonados para tener todo a mano." },
+      { id: "06", title: "Mueble archivo / impresora", description: "Cajones, puerta y espacio arriba para la impresora." },
     ],
   },
 ];
