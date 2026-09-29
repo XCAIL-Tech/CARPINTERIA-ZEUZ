@@ -42,12 +42,12 @@ export const CATEGORIES: Category[] = [
     name: "Dormitorio",
     description: "Placares, vestidores y mesas de luz que aprovechan cada centímetro.",
     products: [
-      { id: "01", title: "Placard a medida", description: "Puertas corredizas o batientes, interior a tu gusto." },
-      { id: "02", title: "Vestidor", description: "Abierto o cerrado, con barrales, estantes y cajoneras." },
-      { id: "03", title: "Mesa de luz flotante", description: "Suspendida, liviana a la vista y firme en la pared." },
-      { id: "04", title: "Respaldo de cama", description: "Respaldos de madera, lisos o con estantes integrados." },
-      { id: "05", title: "Cómoda / cajonera", description: "Cajones amplios con correderas de calidad." },
-      { id: "06", title: "Cama con cajones", description: "Guardado extra debajo de la cama." },
+      { id: "01", title: "Placard a medida", description: "Puertas corredizas con espejo e interior con estantes y cajones." },
+      { id: "02", title: "Vestidor", description: "Abierto, con barral, estantes y cajones a tu medida." },
+      { id: "03", title: "Mesa de luz flotante", description: "Suspendida, con cajón. Liviana a la vista y firme en la pared." },
+      { id: "04", title: "Respaldo de cama", description: "Respaldo de pared con estantes integrados para lámpara y objetos." },
+      { id: "05", title: "Cómoda / cajonera", description: "Cajones amplios para ordenar ropa y accesorios." },
+      { id: "06", title: "Cama con cajones", description: "Cajones y estantes debajo del colchón: guardado extra." },
     ],
   },
   {
