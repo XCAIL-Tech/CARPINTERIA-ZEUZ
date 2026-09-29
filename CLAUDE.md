@@ -30,6 +30,8 @@ pnpm brand   # branding/logo-zeuz.png → logo web, favicon, íconos, public/og-
 - `src/data/productos.ts` — Categoría → Productos (id "01".."06", título, descripción).
   Foto de cada producto = `src/assets/productos/<categoria>/<id>.webp`, asociada
   sola con `import.meta.glob`. Sin foto → relleno con ícono (`categoryIcons.ts`).
+  Fotos extra `<id>-2.webp`, `<id>-3.webp`… → carrusel (`ProductMedia`), con
+  `imageLabels` opcionales por foto.
 - Navbar: Inicio · Productos (desplegable: Ver todo + categorías) · Acerca de · Contacto.
 - Rutas: `/` · `/productos` (vidriera virtual, ver todo) · `/productos/:categoria` ·
   `/acerca-de` · `/contacto` · `/preguntas-frecuentes` · `*` (404). Todas usan `Layout`

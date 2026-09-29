@@ -4,6 +4,7 @@
  * Cada producto tiene su foto en `src/assets/productos/<categoria>/<id>.webp`
  * (ej: living/01.webp es el primer producto de Living). La foto se asocia sola
  * por el id; mientras no exista se muestra un relleno con el ícono de la categoría.
+ * Fotos extra del mismo producto (`05-2.webp`, `05-3.webp`…) se muestran en carrusel.
  *
  * Para cambiar un producto: editar su `title` / `description` acá y reemplazar
  * su foto (ver `pnpm fotos` en el README).
@@ -14,6 +15,8 @@ export type Product = {
   id: string;
   title: string;
   description: string;
+  /** Etiqueta de cada foto del carrusel, en orden (ej: ["Nena", "Nene"]). */
+  imageLabels?: string[];
 };
 
 export type Category = {
@@ -81,12 +84,17 @@ export const CATEGORIES: Category[] = [
     name: "Infantil",
     description: "Muebles seguros y funcionales para que crezcan con los chicos.",
     products: [
-      { id: "01", title: "Cama infantil", description: "Camas a medida, con o sin baranda." },
-      { id: "02", title: "Cucheta", description: "Dos camas en el espacio de una, con escalera segura." },
-      { id: "03", title: "Escritorio infantil", description: "Para estudiar y dibujar, a la altura justa." },
-      { id: "04", title: "Juguetero / organizador", description: "Cajones y estantes para ordenar juguetes." },
-      { id: "05", title: "Placard infantil", description: "Placares pensados para el cuarto de los chicos." },
-      { id: "06", title: "Biblioteca infantil", description: "Estantes al alcance de los más chicos." },
+      { id: "01", title: "Cama infantil", description: "Cama de madera con baranda, a la medida del cuarto." },
+      { id: "02", title: "Cucheta", description: "Dos camas en el espacio de una, con escalera y cama carrito." },
+      { id: "03", title: "Escritorio infantil", description: "Con estantes y panel para notas, a la altura justa." },
+      { id: "04", title: "Juguetero / organizador", description: "Estantes abiertos para ordenar juguetes y libros." },
+      {
+        id: "05",
+        title: "Placard infantil",
+        description: "Puertas, barral y cajones. En los colores que elijas: rosa, celeste o el que quieras.",
+        imageLabels: ["Nena", "Nene"],
+      },
+      { id: "06", title: "Biblioteca infantil", description: "Libros de frente y al alcance de los más chicos." },
     ],
   },
   {
@@ -111,16 +119,25 @@ const imageModules = import.meta.glob<string>(
   { eager: true, query: "?url", import: "default" },
 );
 
-const imagesByKey: Record<string, string> = {};
+// "05.webp" → foto 1 del producto 05; "05-2.webp" → foto 2 (carrusel).
+const imagesByKey: Record<string, { order: number; url: string }[]> = {};
 for (const path of Object.keys(imageModules)) {
   const parts = path.split("/");
   const category = parts[parts.length - 2];
-  const id = parts[parts.length - 1].replace(/\.[^.]+$/, "");
-  imagesByKey[`${category}/${id}`] = imageModules[path];
+  const match = parts[parts.length - 1].match(/^(\d+)(?:-(\d+))?\./);
+  if (!match) continue;
+  (imagesByKey[`${category}/${match[1]}`] ??= []).push({ order: Number(match[2] ?? 1), url: imageModules[path] });
+}
+for (const list of Object.values(imagesByKey)) list.sort((a, b) => a.order - b.order);
+
+/** Todas las fotos de un producto, en orden (más de una = carrusel). */
+export function getProductImages(categorySlug: string, productId: string): string[] {
+  return (imagesByKey[`${categorySlug}/${productId}`] ?? []).map((i) => i.url);
 }
 
+/** Foto principal de un producto. */
 export function getProductImage(categorySlug: string, productId: string): string | undefined {
-  return imagesByKey[`${categorySlug}/${productId}`];
+  return getProductImages(categorySlug, productId)[0];
 }
 
 /** Portada de categoría: la primera foto disponible entre sus productos. */

@@ -7,11 +7,14 @@
 //   2. Empezar el nombre con el número del producto de src/data/productos.ts:
 //      "1-vanitory_flotante.jpg" → producto "01", "5-columna.webp" → "05".
 //      Si falta un número (ej: no hay foto del 6), ese producto sigue con relleno.
+//      Varias fotos con el mismo número = carrusel en ese producto, en orden
+//      alfabético ("5-placar_nena.jpg", "5-placar_nene.jpg").
 //   3. pnpm fotos
 //
-// Resultado: src/assets/productos/<categoria>/01.webp, 02.webp… (máx. 1600px
-// de ancho, WebP calidad 80). Solo se tocan las categorías que tengan
-// originales; en ellas se regeneran todas las fotos.
+// Resultado: src/assets/productos/<categoria>/01.webp, 02.webp… y, si hay
+// carrusel, 05.webp, 05-2.webp, 05-3.webp… (máx. 1600px de ancho, WebP calidad
+// 80). Solo se tocan las categorías que tengan originales; en ellas se
+// regeneran todas las fotos.
 //
 // Además: src/assets/og/<categoria>.jpg (1200×630, a partir de la primera foto con buena
 // resolución, desde 1000px) — la vista previa al compartir el link de esa
@@ -45,28 +48,28 @@ for (const dir of categories.filter((d) => d.isDirectory())) {
       process.exitCode = 1;
       continue;
     }
-    const id = match[1].padStart(2, "0");
-    if (photos.some((p) => p.id === id)) {
-      console.error(`✗ ${dir.name}/${file}: ya hay otra foto para el producto ${id}`);
-      process.exitCode = 1;
-      continue;
-    }
-    photos.push({ id, file });
+    photos.push({ id: match[1].padStart(2, "0"), file });
   }
   if (process.exitCode) continue;
-  photos.sort((a, b) => a.id.localeCompare(b.id));
+  photos.sort((a, b) => a.id.localeCompare(b.id) || a.file.localeCompare(b.file, "es", { numeric: true }));
+  // Nombre de salida: la 1ª foto de cada producto es "05", las siguientes "05-2", "05-3"…
+  const seen = {};
+  for (const p of photos) {
+    seen[p.id] = (seen[p.id] ?? 0) + 1;
+    p.name = seen[p.id] === 1 ? p.id : `${p.id}-${seen[p.id]}`;
+  }
 
   const outDir = path.join(OUT, dir.name);
   await rm(outDir, { recursive: true, force: true });
   await mkdir(outDir, { recursive: true });
 
-  for (const { id, file } of photos) {
+  for (const { name, file } of photos) {
     const info = await sharp(path.join(SRC, dir.name, file))
       .rotate() // respeta la orientación EXIF de fotos de celular
       .resize({ width: 1600, withoutEnlargement: true })
       .webp({ quality: 80 })
-      .toFile(path.join(outDir, `${id}.webp`));
-    console.log(`${dir.name}/${id}.webp  ←  ${file}  (${info.width}×${info.height}, ${Math.round(info.size / 1024)} KB)`);
+      .toFile(path.join(outDir, `${name}.webp`));
+    console.log(`${dir.name}/${name}.webp  ←  ${file}  (${info.width}×${info.height}, ${Math.round(info.size / 1024)} KB)`);
   }
 
   // Vista previa para compartir: la primera foto (en orden de producto; la 01 es

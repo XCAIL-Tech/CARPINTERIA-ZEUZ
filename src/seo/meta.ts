@@ -6,7 +6,7 @@
  *   con IA, que no ejecutan JavaScript).
  * - En el navegador, `Layout` actualiza título / description al navegar.
  */
-import { CATEGORIES, findCategory, getCategoryShareImage, getProductImage } from "@/data/productos";
+import { CATEGORIES, findCategory, getCategoryShareImage, getProductImages } from "@/data/productos";
 import { FAQ } from "@/data/faq";
 import { SITE, ZONE_LABEL } from "@/config/site";
 
@@ -45,7 +45,7 @@ function productList(categorySlug: string) {
   const category = findCategory(categorySlug);
   if (!category) return [];
   return category.products.map((p, i) => {
-    const img = getProductImage(category.slug, p.id);
+    const imgs = getProductImages(category.slug, p.id);
     return {
       "@type": "ListItem",
       position: i + 1,
@@ -55,7 +55,7 @@ function productList(categorySlug: string) {
         description: p.description,
         category: category.name,
         brand: { "@type": "Brand", name: SITE.name },
-        ...(img ? { image: abs(img) } : {}),
+        ...(imgs.length ? { image: imgs.map(abs) } : {}),
         url: `${abs(`/productos/${category.slug}`)}#${category.slug}-${p.id}`,
       },
     };

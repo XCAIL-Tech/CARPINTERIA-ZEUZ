@@ -22,7 +22,9 @@ Categorías: `living` · `dormitorio` · `cocina` · `bano` · `infantil` · `ho
 1. Copiar las fotos en `fotos-originales/<categoría>/` con el **número de producto
    al principio del nombre**: `1-vanitory_flotante.jpg` → producto `01`,
    `5-columna.webp` → producto `05`. Si falta un número, ese producto sigue con
-   relleno. Esa carpeta no se sube al repo.
+   relleno. **Varias fotos con el mismo número = carrusel** en ese producto
+   (`5-placar_nena.jpg`, `5-placar_nene.jpg`); la etiqueta de cada foto va en
+   `imageLabels` del producto. Esa carpeta no se sube al repo.
 2. `pnpm fotos` → genera `src/assets/productos/<categoría>/01.webp …` optimizadas
    (máx. 1600px, WebP) y la vista previa para WhatsApp de la categoría (si alguna
    foto tiene al menos 1000px de ancho).
