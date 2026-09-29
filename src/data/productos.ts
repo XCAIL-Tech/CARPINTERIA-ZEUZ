@@ -55,12 +55,12 @@ export const CATEGORIES: Category[] = [
     name: "Cocina",
     description: "Alacenas, bajo mesadas y despenseros diseñados para tu cocina real.",
     products: [
-      { id: "01", title: "Alacena", description: "Puertas batientes, rebatibles o vidriadas." },
-      { id: "02", title: "Bajo mesada", description: "Cajoneras, especieros y guardado optimizado." },
-      { id: "03", title: "Despensero", description: "Columna de guardado para ordenar la mercadería." },
-      { id: "04", title: "Isla de cocina", description: "Superficie de trabajo con guardado integrado." },
+      { id: "01", title: "Alacena", description: "Alacena de pared con puertas y estantes, a la medida de tu cocina." },
+      { id: "02", title: "Bajo mesada", description: "Cajones y puertas para aprovechar todo el guardado bajo la mesada." },
+      { id: "03", title: "Despensero", description: "Columna con estantes para ordenar la mercadería." },
+      { id: "04", title: "Isla de cocina", description: "Superficie de trabajo y desayunador en el centro de la cocina." },
       { id: "05", title: "Barra desayunador", description: "Ideal para cocinas integradas o espacios chicos." },
-      { id: "06", title: "Mueble para microondas / horno", description: "Columnas y módulos para electrodomésticos." },
+      { id: "06", title: "Mueble para microondas / horno", description: "Espacio para el microondas, con cajón y puertas de guardado." },
     ],
   },
   {
