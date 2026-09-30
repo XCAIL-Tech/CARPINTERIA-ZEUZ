@@ -48,6 +48,10 @@ pnpm brand   # branding/logo-zeuz.png → logo web, favicon, íconos, public/og-
 - `vercel.json` sin rewrite catch-all a propósito: cada ruta tiene su HTML y lo
   inexistente devuelve 404 real. No verificar hidratación con `vite preview` (sirve
   siempre el index del home); usar `npx serve dist`.
+- **SEO local:** la frase clave es "Carpintería en Pablo Podestá, Tres de Febrero".
+  Zona y localidades de envío en `SITE.zone` (`src/config/site.ts`) → alimentan la
+  sección visible `LocalArea` (home), la ficha `BUSINESS_JSONLD` (LocalBusiness,
+  en todas las páginas vía prerender), las FAQ locales y `llms.txt`.
 - Vista previa para WhatsApp: siempre JPG 1200×630 (WhatsApp no muestra bien WebP).
   General: `public/og-image.jpg`; por categoría: `src/assets/og/<cat>.jpg` (lo genera `pnpm fotos`).
 - Todo el render inicial debe ser determinístico (sin `window`/fechas variables fuera de

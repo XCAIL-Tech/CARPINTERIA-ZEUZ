@@ -2,7 +2,7 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { AppRoutes } from "./AppRoutes";
 
-export { ROUTES, NOT_FOUND_META, DEFAULTS } from "./seo/meta";
+export { ROUTES, NOT_FOUND_META, DEFAULTS, BUSINESS_JSONLD } from "./seo/meta";
 export { CATEGORIES } from "./data/productos";
 export { FAQ } from "./data/faq";
 export { SITE, ZONE_LABEL } from "./config/site";

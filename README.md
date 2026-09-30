@@ -37,7 +37,9 @@ Un producto sin foto muestra un relleno de madera con el ícono de la categoría
 
 ## Editar datos
 
-- Teléfono, mail, zona, redes: `src/config/site.ts`
+- Teléfono, mail, zona, localidades de envío, redes: `src/config/site.ts`
+  (las localidades alimentan la sección "Carpintería en Pablo Podestá", la ficha
+  del negocio para Google y las preguntas frecuentes).
 - Categorías y productos (títulos, descripciones): `src/data/productos.ts`
   - Al sumar una categoría: agregar su ícono en `src/components/products/categoryIcons.ts`
     (rutas, sitemap y SEO se generan solos).

@@ -16,6 +16,27 @@ export const SITE = {
     locality: "Pablo Podestá",
     partido: "Tres de Febrero",
     province: "Buenos Aires",
+    /**
+     * Localidades del partido de Tres de Febrero (zona de envíos). Se usan en el
+     * texto visible del sitio y en el schema LocalBusiness (areaServed) — SEO local.
+     */
+    nearby: [
+      "Caseros",
+      "Ciudadela",
+      "Santos Lugares",
+      "Sáenz Peña",
+      "Martín Coronado",
+      "Villa Bosch",
+      "El Palomar",
+      "Ciudad Jardín Lomas del Palomar",
+      "Loma Hermosa",
+      "Churruca",
+      "Once de Septiembre",
+      "José Ingenieros",
+      "Villa Raffo",
+    ],
+    /** Partidos vecinos a los que también se envía. */
+    neighbors: ["Hurlingham", "San Martín"],
   },
 
   social: {

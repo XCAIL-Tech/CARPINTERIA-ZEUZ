@@ -28,7 +28,9 @@ export function Hero() {
 
       <div className="container relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
         <div className="max-w-2xl animate-fade-up">
-          <p className="eyebrow mb-5">Carpintería · Muebles a medida</p>
+          <p className="eyebrow mb-5">
+            Carpintería en {SITE.zone.locality} · {SITE.zone.partido}
+          </p>
           <h1 className="font-display text-[2.6rem] font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.2rem]">
             Muebles hechos <span className="italic text-accent">a la medida</span> de tu espacio.
           </h1>

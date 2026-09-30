@@ -107,7 +107,7 @@ export const CATEGORIES: Category[] = [
       { id: "03", title: "Biblioteca de oficina", description: "Estantes abiertos para libros, carpetas y decoración." },
       { id: "04", title: "Cajonera", description: "Con ruedas y cerradura, para guardar bajo el escritorio." },
       { id: "05", title: "Estantería de pared", description: "Estantes flotantes escalonados para tener todo a mano." },
-      { id: "06", title: "Mueble archivo / impresora", description: "Cajones, puerta y espacio arriba para la impresora." },
+      { id: "06", title: "Mueble archivo / impresora", description: "Cajones, estantes abiertos y espacio arriba para la impresora. Con ruedas." },
     ],
   },
 ];

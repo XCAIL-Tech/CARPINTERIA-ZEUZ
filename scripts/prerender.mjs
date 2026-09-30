@@ -15,7 +15,7 @@ import { pathToFileURL } from "node:url";
 const DIST = "dist";
 const SSR_ENTRY = path.resolve("dist-ssr/entry-server.js");
 
-const { render, ROUTES, NOT_FOUND_META, DEFAULTS, CATEGORIES, FAQ, SITE, ZONE_LABEL } = await import(
+const { render, ROUTES, NOT_FOUND_META, DEFAULTS, BUSINESS_JSONLD, CATEGORIES, FAQ, SITE, ZONE_LABEL } = await import(
   pathToFileURL(SSR_ENTRY).href
 );
 
@@ -51,6 +51,8 @@ function headFor(meta, { indexable = true } = {}) {
     `<meta property="og:image:height" content="${meta.image ? 630 : 1200}" />`,
     `<meta property="og:image:alt" content="${esc(alt)}" />`,
     `<meta name="twitter:image" content="${image}" />`,
+    // Ficha del negocio (LocalBusiness) en todas las páginas + datos propios de la ruta.
+    jsonLd(BUSINESS_JSONLD),
     ...meta.jsonLd.map(jsonLd),
   ].join("\n  ");
 }
@@ -95,7 +97,13 @@ console.log("  ✓ sitemap.xml");
 // ─── llms.txt (GEO: resumen para buscadores / asistentes con IA) ─────────────
 const llms = `# ${SITE.name}
 
-> Carpintería de muebles a medida en ${ZONE_LABEL} (Argentina). Diseña y fabrica muebles para living, dormitorio, cocina, baño, cuartos infantiles y home office. También hace reparaciones de muebles y envíos. Los precios se cotizan a medida por WhatsApp.
+> Carpintería de muebles a medida en ${ZONE_LABEL} (Argentina). Diseña y fabrica muebles para living, dormitorio, cocina, baño, cuartos infantiles y home office. También hace reparaciones de muebles y envíos a todo el partido de ${SITE.zone.partido} y alrededores. Los precios se cotizan a medida por WhatsApp.
+
+## Ubicación y zona de envíos
+
+- Ubicación: ${SITE.zone.locality}, partido de ${SITE.zone.partido}, provincia de Buenos Aires, Argentina.
+- Envíos a todo ${SITE.zone.partido}: ${SITE.zone.nearby.join(", ")}.
+- También a partidos vecinos: ${SITE.zone.neighbors.join(", ")}.
 
 ## Contacto
 
