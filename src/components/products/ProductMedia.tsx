@@ -29,7 +29,7 @@ export function ProductMedia({
 
   if (total === 0) {
     return (
-      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+      <div className="relative aspect-square overflow-hidden bg-muted">
         <CoverImage alt={title} icon={icon} label="Foto próximamente" />
       </div>
     );
@@ -39,7 +39,7 @@ export function ProductMedia({
 
   return (
     <div
-      className="relative aspect-[4/5] overflow-hidden bg-white"
+      className="relative aspect-square overflow-hidden bg-white"
       onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
       onTouchEnd={(e) => {
         if (touchX.current === null || total < 2) return;
@@ -62,7 +62,7 @@ export function ProductMedia({
             tabIndex={i === index ? 0 : -1}
             className="h-full w-full shrink-0"
           >
-            <CoverImage src={src} alt={labels?.[i] ? `${title} — ${labels[i]}` : title} />
+            <CoverImage src={src} alt={labels?.[i] ? `${title} — ${labels[i]}` : title} fit="contain" />
           </button>
         ))}
       </div>
